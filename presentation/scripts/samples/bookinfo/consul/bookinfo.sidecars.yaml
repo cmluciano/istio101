@@ -18,7 +18,7 @@
 version: '2'
 services:
   details-v1-init:
-    image: docker.io/istio/proxy_init:0.5.1
+    image: gihanson/proxy_init:istio101
     cap_add:
       - NET_ADMIN
     network_mode: "container:consul_details-v1_1"
@@ -28,15 +28,15 @@ services:
       - -u
       - "1337"
   details-v1-sidecar:
-    image: docker.io/istio/proxy_debug:0.5.1
+    image: gihanson/proxy_debug:istio101
     network_mode: "container:consul_details-v1_1"
     entrypoint:
       - su
       - istio-proxy
       - -c
-      - "/usr/local/bin/pilot-agent proxy -v 2 --serviceregistry Consul --serviceCluster details-v1 --zipkinAddress zipkin:9411 --configPath /var/lib/istio >/tmp/envoy.log"
+      - "/usr/local/bin/pilot-agent proxy --serviceregistry Consul --serviceCluster details-v1 --zipkinAddress zipkin:9411 --configPath /var/lib/istio >/tmp/envoy.log"
   ratings-v1-init:
-    image: docker.io/istio/proxy_init:0.5.1
+    image: gihanson/proxy_init:istio101
     cap_add:
       - NET_ADMIN
     network_mode: "container:consul_ratings-v1_1"
@@ -46,15 +46,15 @@ services:
       - -u
       - "1337"
   ratings-v1-sidecar:
-    image: docker.io/istio/proxy_debug:0.5.1
+    image: gihanson/proxy_debug:istio101
     network_mode: "container:consul_ratings-v1_1"
     entrypoint:
       - su
       - istio-proxy
       - -c
-      - "/usr/local/bin/pilot-agent proxy -v 2 --serviceregistry Consul --serviceCluster ratings-v1 --zipkinAddress zipkin:9411 --configPath /var/lib/istio >/tmp/envoy.log"
+      - "/usr/local/bin/pilot-agent proxy --serviceregistry Consul --serviceCluster ratings-v1 --zipkinAddress zipkin:9411 --configPath /var/lib/istio >/tmp/envoy.log"
   productpage-v1-init:
-    image: docker.io/istio/proxy_init:0.5.1
+    image: gihanson/proxy_init:istio101
     cap_add:
       - NET_ADMIN
     network_mode: "container:consul_productpage-v1_1"
@@ -64,15 +64,15 @@ services:
       - -u
       - "1337"
   productpage-v1-sidecar:
-    image: docker.io/istio/proxy_debug:0.5.1
+    image: gihanson/proxy_debug:istio101
     network_mode: "container:consul_productpage-v1_1"
     entrypoint:
       - su
       - istio-proxy
       - -c
-      - "/usr/local/bin/pilot-agent proxy -v 2 --serviceregistry Consul --serviceCluster productpage-v1 --zipkinAddress zipkin:9411 --configPath /var/lib/istio >/tmp/envoy.log"
+      - "/usr/local/bin/pilot-agent proxy --serviceregistry Consul --serviceCluster productpage-v1 --zipkinAddress zipkin:9411 --configPath /var/lib/istio >/tmp/envoy.log"
   reviews-v1-init:
-    image: docker.io/istio/proxy_init:0.5.1
+    image: gihanson/proxy_init:istio101
     cap_add:
       - NET_ADMIN
     network_mode: "container:consul_reviews-v1_1"
@@ -82,15 +82,15 @@ services:
       - -u
       - "1337"
   reviews-v1-sidecar:
-    image: docker.io/istio/proxy_debug:0.5.1
+    image: gihanson/proxy_debug:istio101
     network_mode: "container:consul_reviews-v1_1"
     entrypoint:
       - su
       - istio-proxy
       - -c
-      - "/usr/local/bin/pilot-agent proxy -v 2 --serviceregistry Consul --serviceCluster reviews-v1 --zipkinAddress zipkin:9411 --configPath /var/lib/istio >/tmp/envoy.log"
+      - "/usr/local/bin/pilot-agent proxy --serviceregistry Consul --serviceCluster reviews-v1 --zipkinAddress zipkin:9411 --configPath /var/lib/istio >/tmp/envoy.log"
   reviews-v2-init:
-    image: docker.io/istio/proxy_init:0.5.1
+    image: gihanson/proxy_init:istio101
     cap_add:
       - NET_ADMIN
     network_mode: "container:consul_reviews-v2_1"
@@ -100,15 +100,15 @@ services:
       - -u
       - "1337"
   reviews-v2-sidecar:
-    image: docker.io/istio/proxy_debug:0.5.1
+    image: gihanson/proxy_debug:istio101
     network_mode: "container:consul_reviews-v2_1"
     entrypoint:
       - su
       - istio-proxy
       - -c
-      - "/usr/local/bin/pilot-agent proxy -v 2 --serviceregistry Consul --serviceCluster reviews-v2 --zipkinAddress zipkin:9411 --configPath /var/lib/istio >/tmp/envoy.log"
+      - "/usr/local/bin/pilot-agent proxy --serviceregistry Consul --serviceCluster reviews-v2 --zipkinAddress zipkin:9411 --configPath /var/lib/istio >/tmp/envoy.log"
   reviews-v3-init:
-    image: docker.io/istio/proxy_init:0.5.1
+    image: gihanson/proxy_init:istio101
     cap_add:
       - NET_ADMIN
     network_mode: "container:consul_reviews-v3_1"
@@ -118,10 +118,10 @@ services:
       - -u
       - "1337"
   reviews-v3-sidecar:
-    image: docker.io/istio/proxy_debug:0.5.1
+    image: gihanson/proxy_debug:istio101
     network_mode: "container:consul_reviews-v3_1"
     entrypoint:
       - su
       - istio-proxy
       - -c
-      - "/usr/local/bin/pilot-agent proxy -v 2 --serviceregistry Consul --serviceCluster reviews-v3 --zipkinAddress zipkin:9411 --configPath /var/lib/istio >/tmp/envoy.log"
+      - "/usr/local/bin/pilot-agent proxy --serviceregistry Consul --serviceCluster reviews-v3 --zipkinAddress zipkin:9411 --configPath /var/lib/istio >/tmp/envoy.log"
